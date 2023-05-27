@@ -1,5 +1,9 @@
 <%= render 'users/user', user: @user %>
 
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <h2>Book detail</h2>
 <table>
   <tbody>
