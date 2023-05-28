@@ -1,25 +1,30 @@
-<%= render 'user', user: @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'user', user: @user %>
+    </div>
 
-<div>
-  <%= flash[:notice] %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <span><th></th></span>
+            <span><th>Title</th></span>
+            <span><th>Opinion</th></span>
+            <span><th colspan="3"></th></span>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+           <% @books.each do |book| %>
+          </tr>
+            <span><td><%= image_tag @user.get_profile_image(80,80) %></td></span>
+            <span><td><%= link_to book.title,book_path(book.id) %></td></span>
+            <span><td><%= book.body %></td></span>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<h2>Books</h2>
-<table>
-  <thead>
-    <tr>
-      <span><th>Title</th></span>
-      <span><th>Opinion</th></span>
-      <span><th colspan="3"></th></span>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-     <% @books.each do |book| %>
-    </tr>
-      <span><td><%= image_tag @user.get_profile_image(80,80) %></td></span>
-      <span><td><%= link_to book.title,book_path(book.id) %></td></span>
-      <span><td><%= book.body %></td></span>
-    <% end %>
-  </tbody>
-</table>
